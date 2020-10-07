@@ -6,10 +6,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Checker {
     Texture color;
     float x, y;
+    boolean isKing;
+    boolean lightPiece;
 
     public Checker(Boolean dark, float x, float y) {
         this.color = new Texture(dark ? "darkPiece.png" : "LightPiece.png");
         color.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        this.lightPiece = !dark;
         this.x = x;
         this.y = y;
     }
@@ -33,4 +36,11 @@ public class Checker {
     public float getX() { return this.x; }
 
     public float getY() { return this.y; }
+
+    public void setKing(boolean isKing) {
+        this.color = new Texture(!lightPiece ? "DarkKing.png" : "LightKing.png");
+        this.isKing = isKing;
+    }
+
+    public boolean isKing() {return isKing;};
 }
